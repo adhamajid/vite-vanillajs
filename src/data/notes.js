@@ -1,4 +1,4 @@
-const notesData = [
+let notesData = [
     {
         id: 'notes-jT-jjsyz61J8XKiI',
         title: 'Welcome to Notes, Dimas!',
@@ -106,4 +106,16 @@ const notesData = [
     },
 ];
 
-console.log(notesData);
+function getNotes() {
+    return notesData;
+}
+
+function addNote(newNote) {
+    notesData.push(newNote);
+}
+
+function deleteNote(noteId) {
+    notesData = notesData.filter((note) => note.id !== noteId);
+}
+
+export { getNotes, addNote, deleteNote };
