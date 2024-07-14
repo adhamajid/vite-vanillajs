@@ -1,146 +1,70 @@
-body {
-  font-family: "Quicksand", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #4a4d50;
-}
-
-.container {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-}
-
-.title {
-  font-family: "Pacifico", cursive;
+/* Gaya untuk header */
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
   text-align: center;
-  color: #eff1f2;
-  margin-top: 20px;
-  font-size: 36px;
 }
 
-.item-card {
-  background-color: #fff;
-  padding: 20px;
+/* Gaya untuk judul aplikasi */
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-family: "Kalam", cursive;
+}
+
+/* Gaya untuk kontainer utama */
+.container {
+  margin-top: 2rem;
+}
+
+/* Gaya untuk kartu catatan */
+.card {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  width: 90%;
-  max-width: 600px;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 1fr;
-  margin: 0 auto;
 }
 
-.input-card {
-  width: 400px;
-  margin: 0 auto;
-}
-
-form {
-  display: grid;
-  gap: 20px;
-}
-
-label {
-  font-size: 18px;
-  color: #333;
-  font-weight: bold;
-}
-
-input[type="text"] {
-  width: 90%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  transition: border-color 0.3s;
-}
-
-.input-card input:focus {
-  border-color: #007bff;
-}
-
-.button-submit {
-  text-align: center;
-}
-
-button[type="submit"] {
-  font-family: "Quicksand", sans-serif;
-  padding: 12px 24px;
+/* Gaya untuk header kartu */
+.card-header {
   background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-.card {
-  max-width: 800px;
-  margin: 50px auto;
-  display: grid;
-  gap: 50px;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-#noteList {
-  margin-top: 20px;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.note-item {
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 15px;
-}
-
-.note-item:last-child {
-  border-bottom: none;
-}
-
-.note-item h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #007bff;
-}
-
-.note-item p {
-  font-size: 16px;
-  color: #555;
-}
-
-.delete-button {
-  padding: 8px 16px;
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.delete-button:hover {
-  background-color: #c82333;
-}
-
-footer {
-  background-color: #959493;
   color: white;
-  padding: 10px;
-  text-align: center;
   font-weight: bold;
-  width: 100%;
-  height: 50px;
-  bottom: 0;
-  position: fixed; /* agar footer selalu di bagian bawah layar */
+  font-family: "Kalam", cursive;
+}
+
+/* Gaya untuk tombol tambah */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-family: "Kalam", cursive;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Gaya untuk input form dan textarea */
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+}
+
+/* Gaya untuk kontainer catatan */
+#notes-container {
+  margin-top: 1.5rem;
+}
+
+/* Gaya untuk judul catatan */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: "Kalam", cursive;
+}
+
+/* Gaya untuk teks catatan */
+.card-text {
+  font-size: 1rem;
+  color: #333;
+  font-family: "Kalam", cursive;
 }
