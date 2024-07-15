@@ -1,70 +1,105 @@
-/* Gaya untuk header */
+body {
+  font-family: "Kalam", cursive;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
 header {
   background-color: #007bff;
   color: white;
-  padding: 1rem;
+  padding: 10px 0;
   text-align: center;
 }
 
-/* Gaya untuk judul aplikasi */
 .title {
   margin: 0;
-  font-size: 2rem;
-  font-family: "Kalam", cursive;
+  font-size: 2.5rem;
 }
 
-/* Gaya untuk kontainer utama */
 .container {
-  margin-top: 2rem;
+  padding-top: 20px;
 }
 
-/* Gaya untuk kartu catatan */
 .card {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-/* Gaya untuk header kartu */
-.card-header {
-  background-color: #007bff;
+#notes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.note-item {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.note-item h3 {
+  margin-top: 0;
+}
+
+.note-item p {
+  margin-bottom: 10px;
+}
+
+.delete-button {
+  background-color: #dc3545;
   color: white;
-  font-weight: bold;
-  font-family: "Kalam", cursive;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
-/* Gaya untuk tombol tambah */
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
 .btn-primary {
   background-color: #007bff;
-  border-color: #007bff;
-  font-family: "Kalam", cursive;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .btn-primary:hover {
   background-color: #0056b3;
-  border-color: #0056b3;
 }
 
-/* Gaya untuk input form dan textarea */
-.form-control {
-  border-radius: 5px;
-  border: 1px solid #ced4da;
-}
-
-/* Gaya untuk kontainer catatan */
-#notes-container {
-  margin-top: 1.5rem;
-}
-
-/* Gaya untuk judul catatan */
-.card-title {
-  font-size: 1.25rem;
+footer {
+  background-color: #959493;
+  color: white;
+  padding: 10px;
+  text-align: center;
   font-weight: bold;
-  font-family: "Kalam", cursive;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  position: fixed; /* agar footer selalu di bagian bawah layar */
 }
 
-/* Gaya untuk teks catatan */
-.card-text {
-  font-size: 1rem;
-  color: #333;
-  font-family: "Kalam", cursive;
+.footer .container {
+  max-width: 960px;
+  margin: 0 auto;
 }
