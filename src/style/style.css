@@ -104,30 +104,36 @@ footer {
   margin: 0 auto;
 }
 
-#loading {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
+/* Add styles for the loading spinner */
+.loading {
+  position: fixed; /* Make sure it's fixed to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  display: none; /* Initially hidden */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 1000; /* Ensure it's on top of other elements */
 }
 
-@media (max-width: 768px) {
-  #notesList {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
-  .note-item {
-    padding: 10px;
-    font-size: 14px;
-  }
+/* Spinner styles */
+.spinner {
+  border: 8px solid #f3f3f3; /* Light grey background */
+  border-top: 8px solid #3498db; /* Blue spinner color */
+  border-radius: 50%;
+  width: 60px; /* Size of the spinner */
+  height: 60px; /* Size of the spinner */
+  animation: spin 1s linear infinite; /* Spin animation */
 }
 
-@media (max-width: 576px) {
-  #notesList {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+/* Keyframes for spin animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  .note-item {
-    padding: 8px;
-    font-size: 12px;
+  100% {
+    transform: rotate(360deg);
   }
 }

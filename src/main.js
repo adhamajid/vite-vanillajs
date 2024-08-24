@@ -1,8 +1,12 @@
-import "../style.css";
+import "./style/style.css";
+import { Loading } from "./script/loading.js"; // Import LoadingSpinner
 import "./script/index.js";
-import "./data/notes.js";
-import "./script/footer.js";
-import { getNotes, addNote, deleteNote } from "./data/notes.js";
+import Swal from "sweetalert2";
+
+// Create an instance of LoadingSpinner
+const loadingSpinner = new Loading();
+
+const baseUrl = "https://notes-api.dicoding.dev/v2";
 
 // Fungsi untuk membuat elemen catatan
 function createNoteCard(note) {
@@ -27,16 +31,90 @@ function createNoteCard(note) {
   return card;
 }
 
+// Fungsi untuk mendapatkan catatan dari API
+const getNotes = () => {
+  loadingSpinner.show(); // Show loading spinner
+  return fetch(`${baseUrl}/notes`)
+    .then((response) => response.json())
+    .then((responseJson) => {
+      if (responseJson.error) {
+        showResponseMessage(responseJson.message);
+      } else {
+        return responseJson.data;
+      }
+    })
+    .catch((error) => {
+      showResponseMessage(error);
+    })
+    .finally(() => {
+      loadingSpinner.hide(); // Hide loading spinner
+    });
+};
+
+// Fungsi untuk menambahkan catatan
+const addNote = (note) => {
+  loadingSpinner.show(); // Show loading spinner
+  fetch(`${baseUrl}/notes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Auth-Token": "12345",
+    },
+    body: JSON.stringify({ title: note.title, body: note.body }),
+  })
+    .then(() => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Notes has been added",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      getNotes().then(renderNotes);
+    })
+    .catch((error) => {
+      showResponseMessage(error);
+    })
+    .finally(() => {
+      loadingSpinner.hide(); // Hide loading spinner
+    });
+};
+
+// Fungsi untuk menghapus catatan
+const deleteNote = (noteId) => {
+  loadingSpinner.show(); // Show loading spinner
+  fetch(`${baseUrl}/notes/${noteId}`, {
+    method: "DELETE",
+    headers: {
+      "X-Auth-Token": "12345",
+    },
+  })
+    .then(() => {
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your note has been deleted.",
+        icon: "success",
+      });
+      getNotes().then(renderNotes);
+    })
+    .catch((error) => {
+      showResponseMessage(error);
+    })
+    .finally(() => {
+      loadingSpinner.hide(); // Hide loading spinner
+    });
+};
+
 // Fungsi untuk menampilkan catatan
-function displayNotes() {
+const renderNotes = (notes) => {
   const notesContainer = document.getElementById("notes-container");
   notesContainer.innerHTML = "";
-  const notes = getNotes();
+
   notes.forEach((note) => {
     const noteCard = createNoteCard(note);
     notesContainer.appendChild(noteCard);
   });
-}
+};
 
 // Event listener untuk menambah catatan
 document
@@ -47,14 +125,10 @@ document
     const content = document.getElementById("note-content").value.trim();
     if (title && content) {
       const newNote = {
-        id: `notes-${Math.random().toString(36).substr(2, 9)}`,
         title: title,
         body: content,
-        createdAt: new Date().toISOString(),
-        archived: false,
       };
       addNote(newNote);
-      displayNotes();
       document.getElementById("add-note-form").reset();
     } else {
       alert("Judul dan konten tidak boleh kosong!");
@@ -68,9 +142,19 @@ document
     if (event.target.classList.contains("delete-button")) {
       const noteId = event.target.getAttribute("data-note-id");
       deleteNote(noteId);
-      displayNotes();
     }
   });
 
+// Menampilkan pesan kesalahan
+const showResponseMessage = (message) => {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: message,
+  });
+};
+
 // Menampilkan catatan saat halaman pertama kali dimuat
-displayNotes();
+document.addEventListener("DOMContentLoaded", () => {
+  getNotes().then(renderNotes);
+});
