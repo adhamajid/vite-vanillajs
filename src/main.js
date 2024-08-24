@@ -1,7 +1,6 @@
 import "../style.css";
 import "./script/index.js";
 import "./data/notes.js";
-import "./script/footer.js";
 import { getNotes, addNote, deleteNote } from "./data/notes.js";
 
 // Fungsi untuk membuat elemen catatan
